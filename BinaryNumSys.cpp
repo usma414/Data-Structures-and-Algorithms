@@ -34,7 +34,7 @@
  }
 
  int main () {
-    // cout<< "Binary form of number n is: " << decToBin(8);
+    cout<< "Binary form of number n is: " << decToBin(8) << endl;
     cout << "Decimal form of number n is : " << binToDec(1010);
  }
 
