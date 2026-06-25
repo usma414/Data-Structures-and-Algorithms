@@ -104,49 +104,102 @@ public:
 // #Inheritance
 
 
-class Person { 
-public:
+// class Person { 
+// public:
 
+//     string name;
+//     int age;
+
+//     Person (string name, int age) {
+//         // cout << "I am Person's constructor" << endl;
+//         this->name = name;
+//         this->age = age;
+//     }
+// };
+
+// class Student: public Person {
+// public:
+//     int rollno;
+
+//     void getInfo () {
+//         cout << "Name: " << name << endl;
+//         cout << "Age: " << age << endl;
+//         cout << "Roll Num: " << rollno << endl; 
+//     }
+
+//     Student(string name, int age, int rollno) : Person(name, age) {
+//         // cout << "I am a undergrad student" << endl;
+//         this->rollno = rollno;
+//     }
+// };
+
+// // Multiple Inheritance
+
+// class gradStudent : public Student {
+// public:
+//     string researchArea;
+
+//     gradStudent(string name, int age, int rollno, string researchArea) : Student(name, age, rollno) {
+//         // cout << "I am research Student" << endl;
+//         this->researchArea = researchArea;
+//     }
+// };
+
+// int main () {
+//     gradStudent gs1("Humayun", 23, 1234, "Medicine");
+//     gs1.getInfo();
+    
+// }
+
+
+
+// Inheritance Practice
+
+class Person {
+public:
     string name;
     int age;
 
-    Person (string name, int age) {
-        // cout << "I am Person's constructor" << endl;
+    Person(string name, int age) {
         this->name = name;
         this->age = age;
     }
 };
 
-class Student: public Person {
+class Player : public Person {
 public:
-    int rollno;
+    int jerseyNum;
+    string position;
+
+    Player(string name, int age, int jerseyNum, string position) : Person(name, age) {
+        this->jerseyNum = jerseyNum;
+        this->position = position;
+    }
+};
+
+class Captain : public Player {
+public:
+    int yearsAsCaptain;
+
+    Captain(string name, int age, int jerseyNum, string position, int yearsAsCaptain) : Player (name, age, jerseyNum, position) {
+        this->yearsAsCaptain = yearsAsCaptain;
+    }
 
     void getInfo () {
         cout << "Name: " << name << endl;
         cout << "Age: " << age << endl;
-        cout << "Roll Num: " << rollno << endl; 
-    }
-
-    Student(string name, int age, int rollno) : Person(name, age) {
-        // cout << "I am a undergrad student" << endl;
-        this->rollno = rollno;
-    }
-};
-
-// Multiple Inheritance
-
-class gradStudent : public Student {
-public:
-    string researchArea;
-
-    gradStudent(string name, int age, int rollno, string researchArea) : Student(name, age, rollno) {
-        // cout << "I am research Student" << endl;
-        this->researchArea = researchArea;
+        cout << "JerseyNumber: " << jerseyNum << endl;
+        cout << "Position: " << position << endl;
+        cout << "Years as Captain: " << yearsAsCaptain << endl; 
     }
 };
 
 int main () {
-    gradStudent gs1("Humayun", 23, 1234, "Medicine");
-    gs1.getInfo();
-    
+    Captain c1("Humayun", 23, 10, "CAM", 2);
+    Captain c2("Lionel Messi", 39, 10, "RW", 16);
+    Captain c3("F.De Jong", 29, 21, "CDM", 5);
+    c1.getInfo();
+    c2.getInfo();
+    c3.getInfo();
 }
+
