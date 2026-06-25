@@ -91,11 +91,62 @@ public:
     }
 };
 
+// int main () {
+
+//    Teacher t1 = Teacher("Humayun Sarfraz", "Embryology", "Medicine", 29000);
+//    Teacher t2 = Teacher("Maria Sarfraz", "Gastrology", "Surgery", 70000);
+//    t1.teacherDetails();
+//    t2.teacherDetails();
+
+// }
+
+
+// #Inheritance
+
+
+class Person { 
+public:
+
+    string name;
+    int age;
+
+    Person (string name, int age) {
+        // cout << "I am Person's constructor" << endl;
+        this->name = name;
+        this->age = age;
+    }
+};
+
+class Student: public Person {
+public:
+    int rollno;
+
+    void getInfo () {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Roll Num: " << rollno << endl; 
+    }
+
+    Student(string name, int age, int rollno) : Person(name, age) {
+        // cout << "I am a undergrad student" << endl;
+        this->rollno = rollno;
+    }
+};
+
+// Multiple Inheritance
+
+class gradStudent : public Student {
+public:
+    string researchArea;
+
+    gradStudent(string name, int age, int rollno, string researchArea) : Student(name, age, rollno) {
+        // cout << "I am research Student" << endl;
+        this->researchArea = researchArea;
+    }
+};
+
 int main () {
-
-   Teacher t1 = Teacher("Humayun Sarfraz", "Embryology", "Medicine", 29000);
-   Teacher t2 = Teacher("Maria Sarfraz", "Gastrology", "Surgery", 70000);
-   t1.teacherDetails();
-   t2.teacherDetails();
-
+    gradStudent gs1("Humayun", 23, 1234, "Medicine");
+    gs1.getInfo();
+    
 }
