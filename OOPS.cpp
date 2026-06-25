@@ -13,6 +13,14 @@ public:
     string subject;
     string dept;
     
+    void setSalary (int s) {
+        salary = s;
+    }
+
+    double getSalary () {
+        return salary;
+    }
+
     // Method
     void changeDept (string newDept) {
         dept = newDept;
@@ -22,7 +30,7 @@ public:
         cout << "Name: " << name << endl;
         cout << "Subject: " << subject << endl;
         cout << "Department: " << dept << endl;
-        cout << "Salary: " << salary << endl;
+        cout << "Salary: " << getSalary() << endl;
     }
 };
 
@@ -32,11 +40,13 @@ int main () {
     t1.name = "Humayun Sarfraz";
     t1.subject = "Physiology";
     t1.dept = "Medicine";
-   
+    t1.setSalary(46000);
+    t1.getSalary();
 
-    t1.teacherDetails();
+    // t1.teacherDetails();
 
     t1.changeDept("MBBS");
     t1.teacherDetails();
 
 }
+
