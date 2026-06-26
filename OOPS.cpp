@@ -155,51 +155,150 @@ public:
 
 // Inheritance Practice
 
-class Person {
+// class Person {
+// public:
+//     string name;
+//     int age;
+
+//     Person(string name, int age) {
+//         this->name = name;
+//         this->age = age;
+//     }
+// };
+
+// class Player : public Person {
+// public:
+//     int jerseyNum;
+//     string position;
+
+//     Player(string name, int age, int jerseyNum, string position) : Person(name, age) {
+//         this->jerseyNum = jerseyNum;
+//         this->position = position;
+//     }
+// };
+
+// class Captain : public Player {
+// public:
+//     int yearsAsCaptain;
+
+//     Captain(string name, int age, int jerseyNum, string position, int yearsAsCaptain) : Player (name, age, jerseyNum, position) {
+//         this->yearsAsCaptain = yearsAsCaptain;
+//     }
+
+//     void getInfo () {
+//         cout << "Name: " << name << endl;
+//         cout << "Age: " << age << endl;
+//         cout << "JerseyNumber: " << jerseyNum << endl;
+//         cout << "Position: " << position << endl;
+//         cout << "Years as Captain: " << yearsAsCaptain << endl; 
+//     }
+// };
+
+// int main () {
+//     Captain c1("Humayun", 23, 10, "CAM", 2);
+//     Captain c2("Lionel Messi", 39, 10, "RW", 16);
+//     Captain c3("F.De Jong", 29, 21, "CDM", 5);
+//     c1.getInfo();
+//     c2.getInfo();
+//     c3.getInfo();
+// }
+
+
+// class Device {
+// public:
+    
+//     string name;
+//     string company;
+
+//     Device (string name, string company) {
+//         this->name = name;
+//         this->company = company;
+//     }
+
+//     ~Device () {
+//         cout << "Device Destructor called" << endl;
+//     }
+
+// };
+
+// class Laptop : public Device  {
+// public: 
+
+//     string processor;
+//     int RAM;
+
+//     Laptop (string name, string company, string processor, int RAM) : Device (name, company) {
+//         this->processor = processor;
+//         this->RAM = RAM;
+//     }
+
+//     ~Laptop () {
+//         cout << "Laptop Destructor called" << endl;
+//     }
+
+//     void getInfo () {
+//         cout << "Device name: " << name << endl;
+//         cout << "Device Company: " << company << endl;
+//         cout << "Processor: " << processor << endl;
+//         cout << "RAM: " << RAM << endl;
+//     }
+// };
+
+// int main () {
+
+//     Laptop l1("Laptop", "DELL", "Core i5", 16);
+//     Laptop l2("Mobile Phone", "Apple", "ios", 256);
+
+//     l1.getInfo();
+//     l2.getInfo();
+// }
+
+
+
+
+// Child inheritingg from Multiple Parents-----Multiple Inheritance 
+
+class Student {
 public:
     string name;
-    int age;
+    int rollno;
 
-    Person(string name, int age) {
+    Student (string name, int rollno) {
         this->name = name;
-        this->age = age;
+        this->rollno = rollno;
     }
 };
 
-class Player : public Person {
+class Teacher {
 public:
-    int jerseyNum;
-    string position;
+    string subject;
+    double salary;
 
-    Player(string name, int age, int jerseyNum, string position) : Person(name, age) {
-        this->jerseyNum = jerseyNum;
-        this->position = position;
+    Teacher (string subject, double salary) {
+        this->subject = subject;
+        this->salary = salary;
     }
 };
 
-class Captain : public Player {
+class TA : public Student, public Teacher {
 public:
-    int yearsAsCaptain;
-
-    Captain(string name, int age, int jerseyNum, string position, int yearsAsCaptain) : Player (name, age, jerseyNum, position) {
-        this->yearsAsCaptain = yearsAsCaptain;
+    TA(string name, int rollno, string subject, double salary): Student(name, rollno), Teacher(subject, salary) {
+       
     }
 
     void getInfo () {
         cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
-        cout << "JerseyNumber: " << jerseyNum << endl;
-        cout << "Position: " << position << endl;
-        cout << "Years as Captain: " << yearsAsCaptain << endl; 
+        cout << "Rollno: " << rollno << endl;
+        cout << "Subject: " << subject << endl;
+        cout << "Salary: " << salary << endl;
     }
 };
 
 int main () {
-    Captain c1("Humayun", 23, 10, "CAM", 2);
-    Captain c2("Lionel Messi", 39, 10, "RW", 16);
-    Captain c3("F.De Jong", 29, 21, "CDM", 5);
-    c1.getInfo();
-    c2.getInfo();
-    c3.getInfo();
+
+    TA t1("Humayun", 2341, "Medicine", 35000);
+    t1.getInfo();
 }
+
+
 
