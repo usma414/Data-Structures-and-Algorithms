@@ -258,46 +258,335 @@ public:
 
 // Child inheritingg from Multiple Parents-----Multiple Inheritance 
 
-class Student {
-public:
-    string name;
-    int rollno;
+// class Student {
+// public:
+//     string name;
+//     int rollno;
 
-    Student (string name, int rollno) {
-        this->name = name;
-        this->rollno = rollno;
-    }
-};
+//     Student (string name, int rollno) {
+//         this->name = name;
+//         this->rollno = rollno;
+//     }
+// };
 
-class Teacher {
-public:
-    string subject;
-    double salary;
+// class Teacher {
+// public:
+//     string subject;
+//     double salary;
 
-    Teacher (string subject, double salary) {
-        this->subject = subject;
-        this->salary = salary;
-    }
-};
+//     Teacher (string subject, double salary) {
+//         this->subject = subject;
+//         this->salary = salary;
+//     }
+// };
 
-class TA : public Student, public Teacher {
-public:
-    TA(string name, int rollno, string subject, double salary): Student(name, rollno), Teacher(subject, salary) {
+// class TA : public Student, public Teacher {
+// public:
+//     TA(string name, int rollno, string subject, double salary): Student(name, rollno), Teacher(subject, salary) {
        
+//     }
+
+//     void getInfo () {
+//         cout << "Name: " << name << endl;
+//         cout << "Rollno: " << rollno << endl;
+//         cout << "Subject: " << subject << endl;
+//         cout << "Salary: " << salary << endl;
+//     }
+// };
+
+// int main () {
+
+//     TA t1("Humayun", 2341, "Medicine", 35000);
+//     t1.getInfo();
+// }
+
+
+
+//  Hierarchial Inheritance
+
+
+// class Person {
+// public:
+//     string name;
+//     int age;
+
+//     Person (string name, int age) {
+//         this->name = name;
+//         this->age = age;
+//     }
+
+//     virtual void getInfo() {
+//          cout << "Name: " << name << endl;
+//         cout << "Age: " << age << endl;
+//     }
+
+// };
+
+// class Student : public Person {
+// public: 
+//     int rollno;
+
+//     Student(string name, int age, int rollno) : Person (name, age) {
+//         this->rollno = rollno;
+//     }
+
+//     void getInfo () {
+//         Person::getInfo();
+//         cout << "Roll No: " << rollno << endl;
+//     }
+// };
+
+// class Teacher : public Person {
+// public: 
+//     string subject;
+    
+//     Teacher(string name, int age, string subject): Person(name, age) {
+//         this->subject = subject;
+//     }
+
+//     void getInfo () override {
+//         Person::getInfo();
+//         cout << "Subject: " << subject << endl;
+//     }
+// };
+
+// int main () {
+//     Student s1("Humayun", 23, 2341);
+//     Teacher t1("Ali", 34, "Chemistry");
+//     t1.getInfo();
+//     s1.getInfo();
+// }
+
+
+// class Shape {
+//     virtual void draw();
+// };
+
+// class Circle : public Shape {
+//     public: 
+//        void draw() {
+//             cout << "Drawing a circle\n";
+//         }
+// };
+
+// class Rectangle: public Shape {
+//     public:
+//         void draw() {
+//             cout << "Drawing Rectangle\n";
+//         }
+// };
+
+// int main () {
+//     Circle c1;
+//     c1.draw();
+//     return 0;
+// }
+
+
+// class Employee {
+// public:
+
+//     virtual void calculateSalary() {
+//         cout << "Calculating salary";
+//     }
+// };
+
+// class Manager : public Employee {
+// public: 
+
+//     void calculateSalary () {
+//         cout << "Employees salary" << endl;
+//     }
+// };
+
+// class Developer : public Employee {
+// public:
+
+//     void calculateSalary () {
+//         cout << "Developer salary" << endl;
+//     }
+// };
+
+// int main () {
+//     Manager m1;
+//     m1.calculateSalary();
+//     Developer d1;
+//     d1.calculateSalary();
+// }
+
+
+
+
+// Revising all Concepts in one go till now
+
+class Book {
+public:
+
+    string title;
+    string author;
+    double price;
+
+    Book() {
+        cout << "Book Constructor here" << endl;
     }
 
-    void getInfo () {
-        cout << "Name: " << name << endl;
-        cout << "Rollno: " << rollno << endl;
-        cout << "Subject: " << subject << endl;
-        cout << "Salary: " << salary << endl;
+    Book(string title, string author, double price) {
+        this->title = title;
+        this->author = author;
+        this-> price = price;
     }
 };
+
+class Circle {
+public: 
+    double radius;
+
+    Circle() {
+        cout << "Area to be Calculated" << endl;
+    }
+
+    Circle (double radius) {
+        this->radius = radius;
+    }
+
+    void area () {
+        double area = 2 * 3.14 * radius;
+        cout << "Area of circle is: " << area << endl;
+    }
+};
+
+class Vehicle {
+public:
+
+    string model;
+    string name;
+
+    Vehicle (string model, string name) {
+        this->model = model;
+        this->name = name;
+    }
+
+    virtual void getInfo() {
+        cout << "Model: " << model << endl;
+        cout << "Name: " << name << endl;
+    }
+};
+
+class Car : public Vehicle {
+public:
+
+    int doors;
+    string fueltype;
+
+    Car (string model, string name, int doors, string fueltype) : Vehicle (model, name) {
+        this->doors = doors;
+        this->fueltype = fueltype;
+    }
+
+    void getInfo() override {
+        Vehicle :: getInfo();
+        cout << "Doors: " << doors << endl;
+        cout << "Fueltype: " << fueltype << endl;
+    }
+    
+};
+
+class Animal {
+public: 
+    string animalName;
+
+    Animal (string animalName) {
+        this->animalName = animalName;
+    }
+
+    void eat() {
+        cout << animalName << " is eating" << endl;
+    }
+
+    void sleep() {
+        cout << animalName << " is sleeping" << endl;
+    }
+
+    virtual void sound() = 0;
+};
+
+class Cat : public Animal {
+public: 
+
+    Cat(string animalName) : Animal(animalName) {
+
+    }
+    void play() {
+        cout << animalName << " is playing" << endl;
+    }
+
+    void sound() override {
+        cout << animalName << " is meowing" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+
+    Dog(string animalName) : Animal(animalName) {
+
+    }
+    void sound() override {
+        cout << animalName << " is barking " << endl;
+    }
+};
+
+class Lion : public Animal{
+public: 
+
+    Lion(string animalName) : Animal(animalName) {
+        
+    }
+    void sound() override {
+        cout << animalName << "Lion is roaring" << endl;
+    }
+
+    void hunt(){
+        cout<< animalName << " is hunting" << endl;
+    }
+};
+
+
 
 int main () {
 
-    TA t1("Humayun", 2341, "Medicine", 35000);
-    t1.getInfo();
+    Circle();
+    Circle c1(4.5);
+    c1.area();
+    Book();
+    Book b1("Man vs Maths", "Ali Rehman", 4.67);
+    cout << b1.author << endl;
+    cout << b1.price << endl;
+
+    Car car1("Toyota", "Prius", 4, "Hybrid");
+    car1.getInfo();
+
+    Cat cat1("Milo");
+    cat1.eat();
+    cat1.play();
+    cat1.sleep();
+    cat1.sound();
+
+    Dog dog1("Snowy");
+    dog1.eat();
+    dog1.sleep();
+    dog1.sound();
+
+    Lion lion1("Cheetah");
+    lion1.eat();
+    lion1.sleep();
+    lion1.sound();
+    lion1.hunt();
+    
+   
+    
+
+
 }
 
 
