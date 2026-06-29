@@ -415,8 +415,6 @@ public:
 // }
 
 
-
-
 // Revising all Concepts in one go till now
 
 class Book {
@@ -508,6 +506,10 @@ public:
     }
 
     virtual void sound() = 0;
+
+    virtual ~Animal () {
+        cout << "Animal Destructor " << endl;
+    } 
 };
 
 class Cat : public Animal {
@@ -582,9 +584,6 @@ int main () {
     lion1.sleep();
     lion1.sound();
     lion1.hunt();
-    
-   
-    
 
 
 }
