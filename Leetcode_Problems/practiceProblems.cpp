@@ -53,14 +53,60 @@ public:
     }
 
 
+    int maximumSubarray(vector <int> values) {
+        
+        int currSum = 0;
+        int maxSum = INT32_MAX;
+
+        for(int i = 1; i < values.size() ; i++) {
+            currSum += values[i];
+            maxSum = max(currSum, maxSum);
+
+            if (currSum < 0) {
+                currSum = 0;
+            }
+        }
+        return maxSum;
+    }
+
+
+    int majorityElement(vector<int> &digits) {
+
+        int freq = 0;
+        int ans = 0;
+
+        for(int i = 0; i < digits.size(); i++) {
+            if (freq == 0) {
+                ans = digits[i];
+            } 
+
+            if(ans == digits[i]) {
+                freq++;
+            } else 
+            {
+                freq--;
+                ans = digits[i];
+            }
+
+        }
+        return ans;
+    }
+
+
 
 };
 
 int main() {
 
     Solution obj;
-    vector<int> nums = {2,7,11,17};
-    vector<int> ans = obj.twoSum(nums, 9);
+    // vector<int> nums = {2,7,11,17};
+    // vector<int> ans = obj.twoSum(nums, 9);
 
-    cout << ans[0] << ", " << ans[1] << endl;
+    // cout << ans[0] << ", " << ans[1] << endl;
+
+    // vector<int> values = {-2, 4, 4, -1, 8};
+    // cout<< obj.maximumSubarray(values) << endl;
+
+    vector<int> digits = {1,3,1,3,1,3,3,3,2};
+    cout << obj.majorityElement(digits);
 }
