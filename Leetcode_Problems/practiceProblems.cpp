@@ -93,6 +93,44 @@ public:
     }
 
 
+    int buyAndSell (vector <int> prices) {
+
+        int maxProfit = 0;
+        int bestBuy = prices[0];
+
+        for(int i = 1; i < prices.size(); i++) {
+            if(prices[i] > bestBuy) {
+                maxProfit = max(maxProfit, prices[i] - bestBuy);
+            }
+
+            bestBuy = min(bestBuy, prices[i]);
+        }
+        return maxProfit;
+    }
+
+
+    int mostWater(vector<int> heights) {
+
+        int lp = 0;
+        int rp = heights.size() - 1;
+        int maxWater = 0;
+
+        for (int i = 0; i < heights.size(); i++) {
+            int width = rp - lp;
+            int conheight = min(heights[rp], heights[lp]);
+            int currWater = width * conheight;
+
+            maxWater = max(currWater, maxWater);
+
+            if(heights[lp] < heights[rp]) {
+                lp++;
+            } else {
+                rp--;
+            }
+        }
+        return maxWater;
+    }
+
 
 };
 
@@ -108,5 +146,11 @@ int main() {
     // cout<< obj.maximumSubarray(values) << endl;
 
     vector<int> digits = {1,3,1,3,1,3,3,3,2};
-    cout << obj.majorityElement(digits);
+    cout << "Majority Element: " << obj.majorityElement(digits) << endl;
+
+    vector<int> prices = {2,5,3,7};
+    cout << "Max Profit: " << obj.buyAndSell(prices) << endl;
+
+    vector<int> heights = {1,8,6,2,5,4,8,3,7};
+    cout<< "Max Water in a container: " << obj.mostWater(heights) << endl;
 }
