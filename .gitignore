@@ -1,9 +1,0 @@
-# Ignore executables
-*.exe
-
-# Ignore object files
-*.o
-*.obj
-
-# Ignore VS Code settings (optional)
-.vscode/ git 
