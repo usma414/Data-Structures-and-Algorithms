@@ -132,6 +132,38 @@ public:
     }
 
 
+    int sortedarray(vector <int> arr, int tar) {
+
+        int st = 0;
+        int end = arr.size() - 1;
+
+        while (st<=end){
+        
+            int mid = st + (end - st)/2;
+
+            if (arr[mid] == tar) {
+                return mid;
+            }
+
+            if (arr[st] <= arr[mid]) {
+
+                if(tar <= arr[mid] && tar >= arr[st]) {
+                    end = mid - 1;
+                } else {
+                    st = mid + 1;
+                }
+            } else {
+
+                if(tar >= arr[mid] && tar <= arr[end]) {
+                    st = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+        }
+    return -1;
+    }
+
 };
 
 int main() {
@@ -145,12 +177,15 @@ int main() {
     // vector<int> values = {-2, 4, 4, -1, 8};
     // cout<< obj.maximumSubarray(values) << endl;
 
-    vector<int> digits = {1,3,1,3,1,3,3,3,2};
-    cout << "Majority Element: " << obj.majorityElement(digits) << endl;
+    // vector<int> digits = {1,3,1,3,1,3,3,3,2};
+    // cout << "Majority Element: " << obj.majorityElement(digits) << endl;
 
-    vector<int> prices = {2,5,3,7};
-    cout << "Max Profit: " << obj.buyAndSell(prices) << endl;
+    // vector<int> prices = {2,5,3,7};
+    // cout << "Max Profit: " << obj.buyAndSell(prices) << endl;
 
-    vector<int> heights = {1,8,6,2,5,4,8,3,7};
-    cout<< "Max Water in a container: " << obj.mostWater(heights) << endl;
+    // vector<int> heights = {1,8,6,2,5,4,8,3,7};
+    // cout<< "Max Water in a container: " << obj.mostWater(heights) << endl;
+
+    vector<int> arr = {2,3,4,5,6,7,0,1,2,3};
+    cout<< obj.sortedarray(arr, 2);
 }
