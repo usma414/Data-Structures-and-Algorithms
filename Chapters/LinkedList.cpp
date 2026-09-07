@@ -739,6 +739,88 @@ public:
 
     }
 
+
+    void removeCycle() {
+        
+        if(head == NULL) {
+            cout<< "Linked list is empty" << endl;
+            return;
+        }
+
+        Node* slow = head;
+        Node* fast = head;
+        bool hasCycle = false;
+
+        while(fast != NULL && fast->next != NULL) {
+
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast) {
+                hasCycle = true;
+                break;
+            }
+        }
+
+        if(!hasCycle) {
+            return;
+        }
+
+        slow = head; 
+
+        if(slow == fast) {
+
+            while(fast->next != slow) {
+                fast = fast->next;
+            }
+
+            fast->next = NULL;
+            tail = fast;
+            return;
+        }
+
+        Node* prev = NULL;
+
+        while(slow != fast) {
+            slow = slow->next;
+            prev = fast;
+            fast = fast->next;
+        }
+
+        prev->next = NULL;
+        return;
+    }
+
+
+
+    int kfromEnd(int k) {
+
+        if(head == NULL) {
+            cout<<"List is empty" << endl;
+            return -1;
+        }
+
+        Node* first = head;
+        Node* second = head;
+
+        for(int i = 0; i < k; i++) {
+            
+            if(first == NULL){
+                return -1;
+            }
+
+            first = first->next;
+        }
+
+        while(first != NULL) {
+            first = first->next;
+            second = second->next;
+        }
+
+        return second->data;
+
+    }
+
 };
 
 int main() {
