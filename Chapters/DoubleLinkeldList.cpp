@@ -1,27 +1,149 @@
 
+// #include <iostream>
+// using namespace std;
+
+// class Node {
+// public:
+
+//     int data;
+//     Node* next;
+//     Node* prev;
+
+//     Node(int val) {
+//         data = val;
+//         next = NULL;
+//         prev = NULL;
+//     }
+// };
+
+// class Doublyll {
+
+//     Node* head;
+//     Node* tail;
+// public:
+//     Doublyll() {
+//         head = tail = NULL;
+//     }
+
+//     void push_front(int val) {
+
+//         Node* newNode = new Node(val);
+
+//         if(head == NULL) {
+//             head = tail = newNode;
+//             return;
+//         }
+
+        
+
+//         newNode->next = head;
+//         head->prev = newNode;
+//         head = newNode;
+//     }
+
+
+//     void push_back(int val) {
+
+//         Node* newNode = new Node(val);
+
+//         if(head == NULL) {
+//             head = tail = newNode;
+//         }
+
+//         newNode->prev = tail;
+//         tail->next = newNode;
+        
+//         tail = newNode;
+
+//     }
+
+//     void printdll() {
+
+//         if(head == NULL) {
+//             return;
+//         }
+
+//         Node* temp = head;
+
+//         while(temp != NULL) {
+//             cout<< temp->data << " ";
+//             temp = temp->next;
+//         }
+        
+//     }
+
+//     void pop_front() {
+
+//         if(head == NULL) {
+//             return;
+//         }
+
+//         Node* temp = head;
+
+//         head = head->next;
+//         if(head != NULL) {
+//             head->prev = NULL;
+//         }
+//         temp->next = NULL;
+//         delete temp;
+//     }
+
+
+//     void pop_back() {
+
+//         if(head == NULL) {
+//             return;
+//         }
+
+//         Node* temp = tail;
+
+//         tail = tail->prev;
+
+//         if(tail != NULL) {
+//             tail->next = NULL;
+//         }
+
+//         temp->prev = NULL;
+//         delete temp;
+        
+//     }
+// };
+
+// int main() {
+//     Doublyll dll;
+//     dll.push_front(3);
+//     dll.push_front(2);
+//     dll.push_front(1);
+//     dll.push_back(4);
+//     dll.pop_front();
+//     dll.pop_back();
+//     dll.printdll();
+
+// }
+
+
+
 #include <iostream>
 using namespace std;
 
-class Node {
+class Node{
 public:
-
     int data;
     Node* next;
     Node* prev;
 
     Node(int val) {
         data = val;
-        next = NULL;
-        prev = NULL;
+        next = prev = NULL;
     }
 };
 
-class Doublyll {
+class DoublyLinkedList{
 
     Node* head;
     Node* tail;
 public:
-    Doublyll() {
+    DoublyLinkedList() {
         head = tail = NULL;
     }
 
@@ -34,13 +156,12 @@ public:
             return;
         }
 
-        
-
-        newNode->next = head;
         head->prev = newNode;
+        newNode->next = head;
         head = newNode;
-    }
 
+
+    }
 
     void push_back(int val) {
 
@@ -52,7 +173,6 @@ public:
 
         newNode->prev = tail;
         tail->next = newNode;
-        
         tail = newNode;
 
     }
@@ -60,6 +180,7 @@ public:
     void printdll() {
 
         if(head == NULL) {
+            cout<< "List is empty" << endl;
             return;
         }
 
@@ -69,12 +190,13 @@ public:
             cout<< temp->data << " ";
             temp = temp->next;
         }
-        
+
     }
 
     void pop_front() {
 
         if(head == NULL) {
+            cout<< "List is Empty" << endl;
             return;
         }
 
@@ -84,40 +206,43 @@ public:
         if(head != NULL) {
             head->prev = NULL;
         }
+       
         temp->next = NULL;
+
         delete temp;
     }
-
 
     void pop_back() {
 
         if(head == NULL) {
+            cout<< "List is empty" << endl;
             return;
         }
 
         Node* temp = tail;
 
         tail = tail->prev;
-
         if(tail != NULL) {
             tail->next = NULL;
         }
 
         temp->prev = NULL;
-        delete temp;
-        
+
     }
+
 };
 
 int main() {
-    Doublyll dll;
+
+    DoublyLinkedList dll;
+
     dll.push_front(3);
     dll.push_front(2);
     dll.push_front(1);
     dll.push_back(4);
     dll.pop_front();
     dll.pop_back();
+
+    
     dll.printdll();
-
 }
-
