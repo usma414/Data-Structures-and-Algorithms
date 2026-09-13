@@ -124,6 +124,7 @@
 
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Node{
@@ -243,6 +244,9 @@ int main() {
     dll.pop_front();
     dll.pop_back();
 
-    
+
     dll.printdll();
 }
+
+
+
