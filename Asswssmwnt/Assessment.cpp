@@ -5,9 +5,9 @@ using namespace std;
 
 int main() {
 
-    bool validMove(string previousCity, string newCity) {
+    // bool validMove(string previousCity, string newCity) {
 
-        return tolower(previousCity[previousCity.size() - 1]) == tolower(newCity[0]);
+    //     return tolower(previousCity[previousCity.size() - 1]) == tolower(newCity[0]);
 
-    }
+    // }
 }
