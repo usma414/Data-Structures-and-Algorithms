@@ -201,9 +201,27 @@ public:
 
     }
 
+    // void insertBottom(stack<int>& s, int y) {
+
+    //     if(s.empty()) {
+    //         s.push(y);
+    //         return;
+    //     }
+
+    //     int x = s.top();
+    //     s.pop();
+
+    //     insertBottom(s, y);
+
+    //     s.push(x);
+
+    // }
+
+
+
     void insertBottom(stack<int>& s, int y) {
 
-        if(s.empty()) {
+        if(s.empty()){
             s.push(y);
             return;
         }
@@ -214,7 +232,111 @@ public:
         insertBottom(s, y);
 
         s.push(x);
+    }
 
+    void reverseStk(stack<int>& s) {
+
+        if(s.empty()) {
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        reverseStk(s);
+
+        insertBottom(s, x);
+    }
+
+    
+    void removemiddle(stack<int>& s, int count, int middle) {
+
+        
+        if(middle == count) {
+            s.pop();
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        
+        removemiddle(s, count + 1, middle);
+
+        s.push(x);
+    }
+
+    void removebottom(stack<int>& s) {
+
+        if (s.size() == 1) {
+            s.pop();
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        removebottom(s);
+
+        s.push(x);
+    }
+
+    int evaluatePostFix(string exp){
+
+        stack<int> s;
+
+        for(int i = 0; i < exp.size(); i++) {
+
+            if (exp[i] == ' '){
+                continue;
+            }
+
+            if((exp[i] != '+') && (exp[i] != '-') && (exp[i] != '/') && (exp[i] != '*') ) {
+                int num = exp[i] - '0';
+                s.push(num);
+            }
+            
+            if(exp[i] == '+') {
+                int a = s.top();
+                s.pop();
+                int b = s.top();
+                s.pop();
+
+                int sum = a + b;
+                s.push(sum);
+            }
+
+            if(exp[i] == '-') {
+                int a = s.top();
+                s.pop();
+                int b = s.top();
+                s.pop();
+
+                int sub = b - a;
+                s.push(sub);
+            }
+
+            if(exp[i] == '*') {
+                int a = s.top();
+                s.pop();
+                int b = s.top();
+                s.pop();
+
+                int prod = a * b;
+                s.push(prod);
+            }
+
+            if(exp[i] == '/'){
+                int a = s.top();
+                s.pop();
+                int b = s.top();
+                s.pop();
+
+                int quotient = b / a;
+                s.push(quotient);
+            }
+        }   
+        return s.top();
     }
 
 
@@ -236,12 +358,15 @@ int main() {
     sr.push(2);
     sr.push(3);
     sr.push(4);
-    ms.removeBottom(sr);
+    // ms.removeBottom(sr);
 
-    while (!ms.empty())
-    {
-        cout<< ms.top() << " ";
-        ms.pop();
-    }
+    // while (!ms.empty())
+    // {
+    //     cout<< ms.top() << " ";
+    //     ms.pop();
+    // }
+
+    cout<< ms.evaluatePostFix("8 2 3 + * 4 -") << endl;
+    cout<< ms.evaluatePostFix("20 5 / 2 -") << endl;
     
 }
