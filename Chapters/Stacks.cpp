@@ -170,7 +170,52 @@ public:
         return result;
     }
 
+    void removeBottom(stack<int>& s) {
 
+        if(s.size() == 1) {
+            s.pop();
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        removeBottom(s);
+
+        s.push(x);
+    }
+
+    void reverseStack(stack<int> s) {
+
+        if(s.empty()) {
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+    
+        reverseStack(s);
+        
+        insertBottom(s, x);
+
+    }
+
+    void insertBottom(stack<int>& s, int y) {
+
+        if(s.empty()) {
+            s.push(y);
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        insertBottom(s, y);
+
+        s.push(x);
+
+    }
 
 
 };
@@ -179,12 +224,20 @@ int main() {
 
     MyStack ms;
 
-    ms.push(1);
-    ms.push(2);
-    ms.push(3);
-    ms.push(4);
-    ms.pop();
+    // ms.push(1);
+    // ms.push(2);
+    // ms.push(3);
+    // ms.push(4);
+    // ms.pop();
     
+    stack<int> sr;
+
+    sr.push(1);
+    sr.push(2);
+    sr.push(3);
+    sr.push(4);
+    ms.removeBottom(sr);
+
     while (!ms.empty())
     {
         cout<< ms.top() << " ";
