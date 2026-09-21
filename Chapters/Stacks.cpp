@@ -291,11 +291,20 @@ public:
                 continue;
             }
 
-            if((exp[i] != '+') && (exp[i] != '-') && (exp[i] != '/') && (exp[i] != '*') ) {
-                int num = exp[i] - '0';
+            if(isdigit(exp[i])) {
+
+                int num = 0;
+                while(i < exp.size() && isdigit(exp[i])) {
+
+                    num = num * 10 + (exp[i] - '0');
+                    i++;
+                }
+
                 s.push(num);
+                i--;
             }
             
+
             if(exp[i] == '+') {
                 int a = s.top();
                 s.pop();
@@ -335,8 +344,45 @@ public:
                 int quotient = b / a;
                 s.push(quotient);
             }
+            
         }   
         return s.top();
+    }
+
+    void sortStack(stack<int>& s) {
+
+            if(s.empty()){
+                return;
+            }
+
+            int a = s.top();
+            s.pop();
+            
+            sortStack(s);
+
+            insertsorted(s, a);
+        
+    }
+
+
+    void insertsorted(stack<int>& s, int y) {
+
+        if (s.empty()){
+            s.push(y);
+            return;
+        }
+
+        if(y <= s.top()){
+            s.push(y);
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        insertsorted(s, y);
+
+        s.push(x);
     }
 
 
@@ -368,5 +414,8 @@ int main() {
 
     cout<< ms.evaluatePostFix("8 2 3 + * 4 -") << endl;
     cout<< ms.evaluatePostFix("20 5 / 2 -") << endl;
-    
+    cout<< ms.evaluatePostFix("12 3 * 4 +") << endl;
+    cout<< ms.evaluatePostFix("100 20 / 5 2 * -") << endl;
+    cout<< ms.evaluatePostFix("15 3 2 + * 10 -") << endl;
+    cout<< ms.evaluatePostFix("25 5 2 + / 3 4 * -") << endl;
 }
