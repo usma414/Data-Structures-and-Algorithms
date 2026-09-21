@@ -388,9 +388,59 @@ public:
 
 };
 
+
+
+
+
+class MinStack{
+
+private:
+    stack<int> s;
+    stack<int> mins;
+
+public:
+
+    void push(int x) {
+
+        if(mins.empty()){
+            mins.push(x);
+        } else if(x <= mins.top()) {
+            mins.push(x);
+        }
+
+        s.push(x);
+
+    }
+
+    void pop() {
+
+        if(s.empty()) {
+            return;
+        }
+
+        if(s.top() == mins.top()) {
+            mins.pop();
+        }
+
+        s.pop();
+    }
+
+    int getMin() {
+
+        if(mins.empty()) {
+            return 0;
+        } else{
+            return mins.top();
+        }
+
+
+    }
+};
+
+
 int main() {
 
-    MyStack ms;
+    // MyStack ms;
 
     // ms.push(1);
     // ms.push(2);
@@ -398,12 +448,12 @@ int main() {
     // ms.push(4);
     // ms.pop();
     
-    stack<int> sr;
+    // stack<int> sr;
 
-    sr.push(1);
-    sr.push(2);
-    sr.push(3);
-    sr.push(4);
+    // sr.push(1);
+    // sr.push(2);
+    // sr.push(3);
+    // sr.push(4);
     // ms.removeBottom(sr);
 
     // while (!ms.empty())
@@ -412,10 +462,26 @@ int main() {
     //     ms.pop();
     // }
 
-    cout<< ms.evaluatePostFix("8 2 3 + * 4 -") << endl;
-    cout<< ms.evaluatePostFix("20 5 / 2 -") << endl;
-    cout<< ms.evaluatePostFix("12 3 * 4 +") << endl;
-    cout<< ms.evaluatePostFix("100 20 / 5 2 * -") << endl;
-    cout<< ms.evaluatePostFix("15 3 2 + * 10 -") << endl;
-    cout<< ms.evaluatePostFix("25 5 2 + / 3 4 * -") << endl;
+    // cout<< ms.evaluatePostFix("8 2 3 + * 4 -") << endl;
+    // cout<< ms.evaluatePostFix("20 5 / 2 -") << endl;
+    // cout<< ms.evaluatePostFix("12 3 * 4 +") << endl;
+    // cout<< ms.evaluatePostFix("100 20 / 5 2 * -") << endl;
+    // cout<< ms.evaluatePostFix("15 3 2 + * 10 -") << endl;
+    // cout<< ms.evaluatePostFix("25 5 2 + / 3 4 * -") << endl;
+
+
+
+    MinStack m;
+
+    m.push(8);
+    m.push(3);
+    m.push(5);
+    m.push(2);
+    m.pop();
+    m.push(1);
+    m.pop();
+
+    cout << m.getMin() << endl;
+
+
 }
