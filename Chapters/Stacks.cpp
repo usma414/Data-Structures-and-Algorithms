@@ -385,7 +385,6 @@ public:
         s.push(x);
     }
 
-
 };
 
 
@@ -432,8 +431,6 @@ public:
         } else{
             return mins.top();
         }
-
-
     }
 };
 
@@ -471,17 +468,19 @@ int main() {
 
 
 
-    MinStack m;
+    // MinStack m;
 
-    m.push(8);
-    m.push(3);
-    m.push(5);
-    m.push(2);
-    m.pop();
-    m.push(1);
-    m.pop();
+    // m.push(8);
+    // m.push(3);
+    // m.push(5);
+    // m.push(2);
+    // m.pop();
+    // m.push(1);
+    // m.pop();
 
-    cout << m.getMin() << endl;
+    // cout << m.getMin() << endl;
 
+
+    
 
 }
