@@ -195,6 +195,47 @@ public:
     }
 };
 
+
+int missingNumber(vector<int> arr) {
+
+    int missingNum = 0;
+    int actualSum = 0;
+    int n = arr.size();
+    int expectedSum = n * (n + 1)/ 2;
+
+    for(int i = 0; i < n; i++) {
+
+        actualSum += arr[i];
+
+    }
+    missingNum = expectedSum - actualSum;
+
+    return missingNum;
+}
+
+void moveNegativeNums(vector<int>& arr) {
+
+    int i = 0;
+    int j = arr.size() - 1;
+
+    while(i < j) {
+
+        if(arr.size() < 1) {
+            return;
+        }
+        if(arr[i] < 0) {
+            i++;
+        } else if (arr[j] >= 0) {
+            j--;
+        } else if(arr[i] >= 0 and arr[j] < 0) {
+            swap(arr[i], arr[j]);
+            i++;
+            j--;
+        }
+        
+    }
+}
+
 int main() {
 
 Fundamentals obj;
