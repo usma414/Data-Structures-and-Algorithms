@@ -23,10 +23,42 @@ int main(){
     //     cout <<"Not Found" << endl;
     // }
 
+    //This is for Looping
+    // for(auto it = m.begin(); it != m.end(); it++) {
+
+    //         cout << it->first << " " << it->second << endl;
+    // }
+
+    // // for searching
+
+    // auto it = m.find("Watch");
+
+    // if(it != m.end()){
+    //     cout<< it->first << " costs " << it->second << endl;
+    // } else {
+    //     cout<< "Not Found" << endl;
+    // }
+
+
+
+
+
+    // Searching/Finding
+
+    auto it = m.find("Headphones");
+
+    if(it != m.end()) {
+        cout<< it->first << " costs " << it->second<<endl;
+    } else {
+        cout << "Not Found" << endl;
+    }
+
+
+    // Traversing 
+
     for(auto it = m.begin(); it != m.end(); it++) {
 
-            cout << "Found " << it->first << " " << it->second << endl;
-        
+        cout<< it->first << " costs " << it->second<<endl;
     }
 
     return 0;
