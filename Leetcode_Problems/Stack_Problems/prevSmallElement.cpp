@@ -29,6 +29,29 @@ public:
         return ans;
     }
 
+    vector<int> nextGreatElement(vector<int> arr) {
+        
+        vector<int> ans(arr.size());
+        stack<int> s;
+
+        for(int i = arr.size()-1; i >= 0; i--) {
+
+            while(s.size() > 0  && s.top() <= arr[i]) {
+                s.pop();
+            }
+
+            if(s.empty()) {
+                ans[i] = -1;
+            } else {
+                ans[i] = s.top();
+            }
+
+            s.push(arr[i]);
+        }
+
+        return ans;
+    }
+
 };
 
 int main() {
@@ -38,8 +61,15 @@ int main() {
     vector<int> arr = {3, 1, 0, 8, 6};
 
     vector<int> ans = obj.prevSmallElement(arr);
+    vector<int> gret = obj.nextGreatElement(arr);
 
     for(int val: ans){
         cout << val << " ";
+    }
+
+    cout<< endl;
+
+    for(int vl: gret){
+        cout<< vl << " ";
     }
 }
