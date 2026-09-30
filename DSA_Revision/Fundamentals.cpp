@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <map>
 using namespace std;
 
 class Fundamentals{
@@ -234,6 +235,11 @@ void moveNegativeNums(vector<int>& arr) {
         }
         
     }
+    // Maps
+
+    
+    
+
 }
 
 int main() {
@@ -243,6 +249,34 @@ Fundamentals obj;
 vector<int> arr = {10, 5, 8, 10, 3};
 
 cout << obj.secondLargestvalue(arr);
+
+    map<string, int> m;
+
+    m["Laptop"] = 100;
+    m["Tv"] = 120;
+    m["Radio"] = 130;
+    m["Watch"] = 110;
+
+    // m.insert({"Mobile", 95});
+
+    // for(auto p : m) {
+    //     cout << p.first  << " " << p.second << endl;
+    // }
+
+    // if(m.find("Laptop") != m.end()) {
+    //     cout << "Found" << endl;
+    // } else {
+    //     cout <<"Not Found" << endl;
+    // }
+
+    for(auto it = m.begin(); it != m.end; it++) {
+
+        auto it = m.find("Laptop") 
+
+        if(it != m.end()) {
+            cout << "Found" << it->first << " " << it->second << endl;
+        }
+    }
 
 }
 
