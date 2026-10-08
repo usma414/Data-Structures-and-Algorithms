@@ -25,13 +25,19 @@ public:
         return battery;
     }
 
+     virtual void increaseSpeed(double amount){
+        speed += amount;
+    }
 
-    void displaydetails(){
+    void displaydetails() {
 
-        cout << "Vehicle Id: cd " 
+        cout << "Vehicle Id: " << getVehicleId()<< endl;
+        cout<< "Speed: "<< getSpeed() << endl;
+        cout<< "Battery: " << getBattery()<< endl; 
     }
 
 };
+
 
 class GroundRobot : public AutoVehicle{
 private:
@@ -42,14 +48,28 @@ public:
 
     GroundRobot(int i, double sp, double bat, int wc, double sr): AutoVehicle(i, sp, bat), wheelCount(wc), sensorRange(sr){};
 
-    int getWheelCount(){
+    int getWheelCount() {
         return wheelCount;
     }
 
-    double getSensorRange(){
+    double getSensorRange() {
         return sensorRange;
     }
+
+    
+    void increaseSpeed(double amount){
+        AutoVehicle::increaseSpeed(amount);
+    }
+
+
+    void displayDetails() {
+        AutoVehicle::displaydetails();
+        cout<< "Wheel Count: "<< getWheelCount() << endl;
+        cout<< "Sensor Range: "<< getSensorRange() << " miles" << endl;
+
+    }
 };
+
 
 class Drone : public AutoVehicle{
 private:
@@ -67,9 +87,38 @@ public:
         return maxAltitude;
     }
 
+    void displayDetails(){
+        AutoVehicle::displaydetails();
+        cout<< "Current Altitude: "<< getCurrentAltitude() << " ft high" << endl;
+        cout<< "Maximum Altitude: " << getMaxAltitude() << " ft high"<< endl;
+    }
+
+    void increaseSpeed(double amount){
+        if(currAltitude > 100){
+            AutoVehicle::increaseSpeed(amount / 2);
+        } else {
+            AutoVehicle::increaseSpeed(amount);
+        }
+    }
+
+
 };
 
 int main(){
 
-    GroundRobot rover(01, 20, 60, 4, 50)
+    // GroundRobot rover(01, 20, 60, 4, 50);
+    // rover.increaseSpeed(50);
+    // rover.displayDetails();
+    // Drone drone(02, 40, 20, 150, 500);
+    // drone.increaseSpeed(30);
+    // drone.displayDetails();
+
+    AutoVehicle* v1 = new GroundRobot(01, 20, 60, 4, 50);
+    AutoVehicle* v2 = new Drone(02, 40, 20, 150, 500);
+
+    v1->increaseSpeed(5);
+    v2->increaseSpeed(30);
+
+    v1->displaydetails();
+    v2->displaydetails();
 }
