@@ -33,6 +33,28 @@ public:
         }
         return count;
     }
+
+    int consecutiveMinsRunover450(vector<int> arr){
+
+        int currRun = 0;
+        int maxRun = 0;
+        for(int i = 0; i< arr.size(); i++) {
+
+            if(arr.empty()){
+                return 0;
+            }
+            if(arr[i]>=450){
+                currRun +=1;
+            }
+
+            if(arr[i] < 450){
+                currRun = 0;
+            }
+
+            maxRun = max(currRun, maxRun);
+        }
+        return maxRun;
+    }
 };
 
 int main(){
@@ -40,6 +62,8 @@ int main(){
     Solution obj;
     vector<int> batteryLevels = {92, 87, 81, 84, 76, 70, 73, 65};
     vector<int> battery = {96, 93, 89, 72, 69, 65, 41, 38, 35};
+    vector<int> distance = {520, 610, 580, 450, 490, 300, 330, 510};
     // cout<< "Count: "<< obj.increaseBattery(batteryLevels);
-    cout<< "Count: " << obj.countingDecrease(battery);
+    // cout<< "Count: " << obj.countingDecrease(battery);
+    cout<< "Consecutive mins run over 450: "<< obj.consecutiveMinsRunover450(distance);
 }
