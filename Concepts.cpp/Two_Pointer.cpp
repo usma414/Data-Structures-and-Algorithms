@@ -148,6 +148,38 @@ public:
         return ans;
     }
 
+
+
+
+    int maximumWaterArea(vector<int> heights){
+
+        int lp = 0;
+        int rp = heights.size() - 1;
+        int maxArea = 0;
+
+        while(lp < rp){
+
+            int width = rp - lp;
+            int minHt = min(heights[rp], heights[lp]);
+
+            int currArea = width * minHt;
+            maxArea = max(currArea, maxArea);
+
+            if(heights[lp] <= heights[rp]){
+                lp++;
+            } else {
+                rp--;
+            }
+        }
+        return maxArea;
+    }
+
+
+
+
+
+    
+
 };
 
 int main(){
@@ -161,11 +193,17 @@ int main(){
     //     cout<< pair.first << " " << pair.second<< endl;
     // }
 
-    vector<int> mass = {4, 8, 11, 15, 19, 23, 28};
-    int limit = 34;
-    vector<pair<int, int>> ans = obj.twoModulemasses(mass, limit);
+    // vector<int> mass = {4, 8, 11, 15, 19, 23, 28};
+    // int limit = 34;
+    // vector<pair<int, int>> ans = obj.twoModulemasses(mass, limit);
 
-    for(auto p: ans){
-        cout<< p.first << " "<< p.second << endl;
-    }
+    // for(auto p: ans){
+    //     cout<< p.first << " "<< p.second << endl;
+    // }
+
+
+
+    vector<int> height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    cout<<"Max Area: "<< obj.maximumWaterArea(height);
+
 }
