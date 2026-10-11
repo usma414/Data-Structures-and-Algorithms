@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include<cmath>
 using namespace std;
 
 class Solution{
@@ -74,7 +75,78 @@ public:
 
 
 
+// A robot has two sorted arrays of sensor measurements, 
+// collected by two different sensors:
+// Find one value from each array whose sum is closest to target.
 
+    vector<pair<int, int>> smallestEror(vector<int>& A, vector<int>& B, int target){
+
+        int i = 0;
+        int j = B.size()-1;
+        vector<pair<int, int>> ans;
+        int minError = INT32_MAX;
+
+        while(i < A.size() && j >= 0){
+
+            int sum = A[i] + B[j];
+
+            int diff = abs(target - sum);
+
+            if(sum > target){
+                if(diff < minError){
+                    minError = min(diff, minError);
+                    ans.clear();
+                    ans.push_back({A[i], B[j]});
+                }
+                j--;
+            } else if(sum < target){
+                if(diff < minError){
+                    minError = min(diff, minError);
+                    ans.clear();
+                    ans.push_back({A[i], B[j]});
+                }
+                i++;
+            } else if(sum == target){
+                ans.push_back({A[i], B[j]});
+                return ans;
+            }
+        }
+        return ans;
+    }
+
+
+
+    // More Clean Code
+
+    vector<pair<int, int>> NearestError(vector<int>& A, vector<int>& B, int target){
+
+        int i = 0;
+        int j = B.size()-1;
+        vector<pair<int, int>> ans;
+        int minError = INT32_MAX;
+
+        while(i < A.size() && j >= 0){
+
+            int sum = A[i] + B[j];
+            int diff = abs(target - sum);
+
+            if(diff < minError){
+                minError = min(diff, minError);
+                ans.clear();
+                ans.push_back({A[i], B[j]});
+            }
+
+            if(sum == target){
+                return ans;
+            } else if(sum > target){
+                j--;
+            } else {
+                i++;
+            }
+
+        }
+        return ans;
+    }
 
 };
 
