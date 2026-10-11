@@ -177,8 +177,41 @@ public:
 
 
 
+    int TrappedWater(vector<int>& height){
 
-    
+        int left = 0;
+        int right = height.size() - 1;
+
+        int leftMax = 0;
+        int rightMax = 0;
+        int water = 0;
+
+        while(left < right){
+
+            if(height[left] <= height[right]){
+
+                leftMax = max(leftMax, height[left]);
+
+                    if(height[left]<leftMax){
+                        water += leftMax - height[left];
+                    }
+
+                left++;
+            } else {
+
+                rightMax = max(rightMax, height[right]);
+
+                    if(height[right]< rightMax){
+                        water += rightMax - height[right];
+                    }
+                right--;
+            }
+
+        }
+
+        return water;
+    }
+
 
 };
 
@@ -203,7 +236,10 @@ int main(){
 
 
 
-    vector<int> height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-    cout<<"Max Area: "<< obj.maximumWaterArea(height);
+    // vector<int> height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    // cout<<"Max Area: "<< obj.maximumWaterArea(height);
+
+    vector<int> height = {10, 0, 3, 2, 7, 2};
+    cout<< "Max Water trapped: "<< obj.TrappedWater(height)<<endl;
 
 }
