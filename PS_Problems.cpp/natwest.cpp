@@ -34,4 +34,15 @@ int main(){
         cout<< "Number: " << val.number << " Position: "<<val.position<< endl;
     
     }
+
+    if(houses.size()< 2){
+        cout<< "Atleast Two houses should be there.."<< endl;
+        return 0;
+    }
+    
+    int maxDis = houses.back().position - houses.front().position;
+
+    cout<<"Front: "<< houses.front().number << endl;
+    cout<< "Back: "<< houses.back().number<< endl;
+    cout<< "Max Dis: "<< maxDis<< endl;
 }
