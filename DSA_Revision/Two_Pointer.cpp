@@ -60,10 +60,8 @@ public:
 
                 right--;
             }
-
-
-
         }
+        return water;
     }
 
 
@@ -76,4 +74,7 @@ int main(){
     Solution obj;
     vector<int> hts = {1, 8, 6, 2, 5, 4, 8, 3, 7};
     cout<<"Max Area: " << obj.maximumArea(hts)<< endl;
+
+    vector<int> trappwaternums = {10, 0, 3, 2, 7, 2};
+    cout<< obj.trappedWater(trappwaternums)<<endl;
 }
