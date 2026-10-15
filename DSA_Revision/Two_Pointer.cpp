@@ -65,7 +65,29 @@ public:
     }
 
 
+    int uniqueElements(vector<int> &nums){
+
+        int i = 0;
+        int count = 0;
+
+        for(int j = 1; j < nums.size(); j++){
+
+            if(nums.empty()){
+                return 0;
+            }
+
+            if(nums[j] != nums[i]){
+                i++;
+                nums[i] = nums[j];
+                count++;
+            }
+        }
+        return count;
+    }
+
 };
+
+
 
 
 
@@ -77,4 +99,6 @@ int main(){
 
     vector<int> trappwaternums = {10, 0, 3, 2, 7, 2};
     cout<< obj.trappedWater(trappwaternums)<<endl;
+
+   
 }
