@@ -239,10 +239,14 @@ public:
     }
 
 
-    vector<int> movingZeros(vector<int> &nums){
+    void movingZeros(vector<int> &nums){
 
         int i = 0;
         int j = 1;
+
+        if(nums.size() < 2){
+            return;
+        }
 
         while(j < nums.size()){
 
@@ -255,7 +259,19 @@ public:
             j++;
 
         }
-        return nums; 
+    }
+// Alternate approach...But moving something same at the end
+    void ALTmovingzeroes(vector<int> &nums){
+        int nextzero = 0;
+        
+        for(int curr = 0; curr< nums.size(); curr++){
+
+            if(nums[curr] != 1){
+                swap(nums[nextzero], nums[curr]);
+                nextzero++;
+            }
+        }
+
     }
 
 };
@@ -300,10 +316,17 @@ int main(){
 
     vector<int> nums = {0,0,1,0,3};
 
-    vector<int> ans = obj.movingZeros(nums);
+    // obj.movingZeros(nums);
 
-    for(int &val: ans){
+    // for(int &val: nums){
+    //     cout<< val << " ";
+    //     }
+
+    vector<int> num1 = {1,0,1,2,3};
+    obj.ALTmovingzeroes(num1);
+
+    for(int &val: num1){
         cout<< val << " ";
-        }
+    }
 
 }
