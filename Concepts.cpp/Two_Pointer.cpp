@@ -213,6 +213,31 @@ public:
     }
 
 
+
+    vector<int> mergeSortedArrays(vector<int> &nums1, int m, vector<int> &nums2, int n){
+
+        int i = n -1;
+        int j = m - 1;
+        int k = m + n - 1;
+
+        if(n == 0 && m == 0){
+            return;
+        }
+        while(j >= 0){
+
+            if(i >= 0 && nums1[i] > nums2[j]){
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
+            }
+
+            k--;
+        }
+        return nums1;
+    }
+
 };
 
 int main(){
@@ -239,7 +264,18 @@ int main(){
     // vector<int> height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
     // cout<<"Max Area: "<< obj.maximumWaterArea(height);
 
-    vector<int> height = {10, 0, 3, 2, 7, 2};
-    cout<< "Max Water trapped: "<< obj.TrappedWater(height)<<endl;
+    // vector<int> height = {10, 0, 3, 2, 7, 2};
+    // cout<< "Max Water trapped: "<< obj.TrappedWater(height)<<endl;
+
+    vector<int> nums1 = {1,2,3,0,0,0};
+    int m = 3;
+    vector<int> nums2 = {2,4,6};
+    int n = 3;
+
+    obj.mergeSortedArrays(nums1, m, nums2, n);
+
+    for(int &val: nums1){
+        cout<< val << " ";
+    }
 
 }
