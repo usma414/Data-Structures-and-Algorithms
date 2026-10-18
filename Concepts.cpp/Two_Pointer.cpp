@@ -216,12 +216,12 @@ public:
 
     vector<int> mergeSortedArrays(vector<int> &nums1, int m, vector<int> &nums2, int n){
 
-        int i = n -1;
-        int j = m - 1;
+        int i = m -1;
+        int j = n - 1;
         int k = m + n - 1;
 
         if(n == 0 && m == 0){
-            return;
+            return nums1;
         }
         while(j >= 0){
 
@@ -236,6 +236,26 @@ public:
             k--;
         }
         return nums1;
+    }
+
+
+    vector<int> movingZeros(vector<int> &nums){
+
+        int i = 0;
+        int j = 1;
+
+        while(j < nums.size()){
+
+            if(nums[i] != 0){
+                i++;
+            }
+            if(nums[j] != 0){
+                swap(nums[j], nums[i]);
+            } 
+            j++;
+
+        }
+        return nums; 
     }
 
 };
@@ -267,15 +287,23 @@ int main(){
     // vector<int> height = {10, 0, 3, 2, 7, 2};
     // cout<< "Max Water trapped: "<< obj.TrappedWater(height)<<endl;
 
-    vector<int> nums1 = {1,2,3,0,0,0};
-    int m = 3;
-    vector<int> nums2 = {2,4,6};
-    int n = 3;
+    // vector<int> nums1 = {1,2,3,0,0,0};
+    // int m = 3;
+    // vector<int> nums2 = {2,4,6};
+    // int n = 3;
 
-    obj.mergeSortedArrays(nums1, m, nums2, n);
+    // obj.mergeSortedArrays(nums1, m, nums2, n);
 
-    for(int &val: nums1){
+    // for(int &val: nums1){
+    //     cout<< val << " ";
+    // }
+
+    vector<int> nums = {0,0,1,0,3};
+
+    vector<int> ans = obj.movingZeros(nums);
+
+    for(int &val: ans){
         cout<< val << " ";
-    }
+        }
 
 }
