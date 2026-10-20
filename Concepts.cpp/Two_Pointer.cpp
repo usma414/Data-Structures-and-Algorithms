@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include<cmath>
+#include <cctype>
 using namespace std;
 
 class Solution{
@@ -274,6 +276,34 @@ public:
 
     }
 
+
+    bool palindrome(string s){
+
+        
+        int i = 0;
+        int j = s.size() - 1;
+
+        while(i < j){
+
+            while(i < j && !isalnum(static_cast<unsigned char>(s[i]))){
+                i++;
+            }
+
+            while(i < j && !isalnum(static_cast<unsigned char>(s[j]))){
+                j--;
+            } 
+
+            if(tolower(static_cast<unsigned char>(s[i])) != tolower(static_cast<unsigned char>(s[j]))){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        
+        return true; 
+    }
+
+
 };
 
 int main(){
@@ -322,11 +352,16 @@ int main(){
     //     cout<< val << " ";
     //     }
 
-    vector<int> num1 = {1,0,1,2,3};
-    obj.ALTmovingzeroes(num1);
+    // vector<int> num1 = {1,0,1,2,3};
+    // obj.ALTmovingzeroes(num1);
 
-    for(int &val: num1){
-        cout<< val << " ";
-    }
+    // for(int &val: num1){
+    //     cout<< val << " ";
+    // }
+
+    string s = "abcba";
+
+    cout<< obj.palindrome(s);
+
 
 }
