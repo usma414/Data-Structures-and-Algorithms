@@ -143,6 +143,52 @@ public:
         newNode->next = temp->next;
         temp->next = newNode;
     }
+
+
+    void search(int val){
+
+        if(head == NULL){
+            cout<< "List is empty" << endl;
+        }
+
+        Node* temp = head;
+        int i = 0;
+        while(temp != NULL){
+
+            if(temp->data == val){
+                cout<< temp->data << " found at Node "<< i + 1<< endl;
+            }
+            i++;
+            temp = temp->next;
+        }
+    }
+
+
+    void reverse(){
+
+        if(head == NULL){
+            cout<< "Empty" << endl;
+            return;
+        }
+
+        if(head->next == NULL){
+            cout<< "Only one node" << endl;
+            return;
+        }
+
+        Node* curr = head;
+        Node* prev = NULL;
+        Node* next = NULL;
+
+        while(curr != NULL){
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head = prev;
+    }
 };
 
 int main(){
@@ -156,6 +202,11 @@ int main(){
     cout<< endl;
     // ll.pop_front();
     ll.insert(45, 2);
+    ll.printll();
+    cout<< endl;
+    ll.search(45);
+    ll.reverse();
+    cout << endl;
     ll.printll();
     
 }
