@@ -67,6 +67,53 @@ public:
             temp = temp->next;
         }
     }
+
+
+    void pop_back(){
+
+        if(head == NULL){
+            cout<<"List is empty"<< endl;
+            return;
+        }
+
+        Node* temp = head;
+
+        while(temp->next != tail){
+            temp = temp->next;
+        }
+
+        if(head == tail){
+            delete head;
+            head = tail =NULL;
+            return;
+        }
+
+        temp->next = NULL;
+        delete tail;
+        tail = temp;
+
+    }
+
+    void pop_front(){
+
+        if(head == NULL){
+            cout<< "Empty"<< endl;
+        }
+
+        if(head == tail){
+            delete head;
+            head = tail = NULL;
+            return;
+        }
+
+        Node* temp = head;
+        head = head->next;
+        temp->next = NULL;
+
+        delete temp;
+        
+    }
+
 };
 
 int main(){
@@ -74,5 +121,11 @@ int main(){
     List ll;
     ll.push_front(34);
     ll.push_back(12);
+    ll.push_back(11);
+    ll.pop_back();
     ll.printll();
+    cout<< endl;
+    ll.pop_front();
+    ll.printll();
+    
 }
