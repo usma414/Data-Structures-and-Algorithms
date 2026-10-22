@@ -32,9 +32,47 @@ public:
 
         if(head == NULL){
             head = tail = newNode;
+            return;
         }
 
         newNode->next = head;
         head = newNode;
     }
+
+    void push_back(int val){
+
+        Node* newNode = new Node(val);
+
+        if(head == NULL){
+            head = tail = newNode;
+            return;
+        }
+
+        tail->next = newNode;
+        tail = newNode;
+    
+    }
+
+    void printll(){
+
+        if(head == NULL){
+            cout<< "List is Empty" << endl;
+            return;
+        }
+
+        Node* temp  = head;
+
+        while(temp != NULL){
+            cout<< temp->data << " ";
+            temp = temp->next;
+        }
+    }
 };
+
+int main(){
+
+    List ll;
+    ll.push_front(34);
+    ll.push_back(12);
+    ll.printll();
+}
