@@ -115,33 +115,32 @@ public:
     }
 
 
-    void insert(int val, int pos ){
+    void insert(int data, int pos){
 
-
-        if(pos < 0){
-            cout<<"Invalid Position"<< endl;
+        if(pos<0){
+            cout<< "Invalid Position"<< endl;
             return;
         }
 
         if(pos == 0){
-            push_front(val);
+            push_front(data);
+            return;
         }
 
+        Node*newNode = new Node(data);
         Node* temp = head;
 
         for(int i = 0; i < pos - 1; i++){
             if(temp == NULL){
-                cout<< "Invalid Position" << endl;
+                cout<< "Invalid position" <<endl;
                 return;
             }
-
             temp = temp->next;
         }
 
-        Node* newNode =  new Node(val);
-
         newNode->next = temp->next;
         temp->next = newNode;
+
     }
 
 
@@ -189,6 +188,57 @@ public:
 
         head = prev;
     }
+
+
+    int middleOfLinkedList(){
+
+        Node* fast = head;
+        Node* slow = head;
+
+        while(fast != NULL && fast->next != NULL){
+
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        return slow->data;
+    }
+
+
+    void remove(int val){
+
+        if(head ==  NULL){
+            cout<<"List is empty"<<endl;
+            return;
+        }
+
+        if(val == head->data){
+            pop_back();
+        }
+
+        Node* curr =head;
+        Node* prev = NULL;
+
+        while(curr != NULL && curr->data != val){
+
+            prev = curr;
+            curr = curr->next;
+        }
+
+        if(curr == NULL){
+            return;
+        }
+
+        prev->next = curr->next;
+
+        if(curr == tail){
+            tail = prev;
+            return;
+        }
+
+        delete curr;
+        
+    }
 };
 
 int main(){
@@ -207,6 +257,13 @@ int main(){
     ll.search(45);
     ll.reverse();
     cout << endl;
+    ll.printll();
+    cout<< endl;
+    cout<<"Middle of Linked List: "<< ll.middleOfLinkedList()<< endl;
+    ll.insert(33,0);
+    ll.printll();
+    cout << endl;
+    ll.remove(12);
     ll.printll();
     
 }
