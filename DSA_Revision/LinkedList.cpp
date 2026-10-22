@@ -114,6 +114,35 @@ public:
         
     }
 
+
+    void insert(int val, int pos ){
+
+
+        if(pos < 0){
+            cout<<"Invalid Position"<< endl;
+            return;
+        }
+
+        if(pos == 0){
+            push_front(val);
+        }
+
+        Node* temp = head;
+
+        for(int i = 0; i < pos - 1; i++){
+            if(temp == NULL){
+                cout<< "Invalid Position" << endl;
+                return;
+            }
+
+            temp = temp->next;
+        }
+
+        Node* newNode =  new Node(val);
+
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
 };
 
 int main(){
@@ -125,7 +154,8 @@ int main(){
     ll.pop_back();
     ll.printll();
     cout<< endl;
-    ll.pop_front();
+    // ll.pop_front();
+    ll.insert(45, 2);
     ll.printll();
     
 }
