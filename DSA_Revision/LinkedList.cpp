@@ -239,31 +239,77 @@ public:
         delete curr;
         
     }
+
+    void CycleDetection(){
+
+        Node* slow = head;
+        Node* fast = head;
+        bool cycleExists = false;
+
+        while(fast != NULL && fast->next != NULL){
+
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast){
+                cycleExists = true;
+                break;
+            }
+        }
+        
+        if(!cycleExists){
+            return;
+        }
+
+        slow = head;
+
+        
+        while(fast!= NULL && fast->next != NULL){
+
+            slow = slow->next;
+            fast = fast->next;
+
+            if(slow == fast){
+                cout<< "Point found from where the loop starts" << endl;
+                return;
+            }
+        }
+
+    }
+
 };
 
 int main(){
 
+    // List ll;
+    // ll.push_front(34);
+    // ll.push_back(12);
+    // ll.push_back(11);
+    // ll.pop_back();
+    // ll.printll();
+    // cout<< endl;
+    // // ll.pop_front();
+    // ll.insert(45, 2);
+    // ll.printll();
+    // cout<< endl;
+    // ll.search(45);
+    // ll.reverse();
+    // cout << endl;
+    // ll.printll();
+    // cout<< endl;
+    // cout<<"Middle of Linked List: "<< ll.middleOfLinkedList()<< endl;
+    // ll.insert(33,0);
+    // ll.printll();
+    // cout << endl;
+    // ll.remove(12);
+    // ll.printll();
+
     List ll;
-    ll.push_front(34);
+    ll.push_back(10);
     ll.push_back(12);
-    ll.push_back(11);
-    ll.pop_back();
-    ll.printll();
-    cout<< endl;
-    // ll.pop_front();
-    ll.insert(45, 2);
-    ll.printll();
-    cout<< endl;
-    ll.search(45);
-    ll.reverse();
-    cout << endl;
-    ll.printll();
-    cout<< endl;
-    cout<<"Middle of Linked List: "<< ll.middleOfLinkedList()<< endl;
-    ll.insert(33,0);
-    ll.printll();
-    cout << endl;
-    ll.remove(12);
-    ll.printll();
+    ll.push_back(14);
+    ll.push_back(16);
+
+    // cout << ll.hasCycle();
     
 }
