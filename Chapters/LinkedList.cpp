@@ -855,8 +855,6 @@ int main() {
     cout << ll.hasCycle();
     ll.kthFromEnd(3);
 
-    
-    
 }
 
 

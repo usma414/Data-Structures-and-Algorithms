@@ -262,7 +262,7 @@ public:
         }
 
         slow = head;
-
+        Node* prev = NULL;
         
         while(fast!= NULL && fast->next != NULL){
 
@@ -270,10 +270,18 @@ public:
             fast = fast->next;
 
             if(slow == fast){
-                cout<< "Point found from where the loop starts" << endl;
-                return;
+
+                Node* curr = slow;
+                while(curr != prev){
+
+                    slow = slow->next;
+                    prev = fast;
+                    fast = fast->next;
+                }
             }
         }
+        prev->next = NULL;
+        return;
 
     }
 
