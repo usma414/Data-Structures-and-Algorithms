@@ -285,6 +285,107 @@ public:
 
     }
 
+    void removeCycle(){
+
+        Node* slow = head;
+        Node* fast = head;
+        bool isCycle = false;
+
+        while(fast!= NULL && fast->next != NULL){
+
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast){
+                isCycle = true;
+                break;
+            }
+        }
+
+        if(!isCycle){
+            cout <<"List do not have any cycle"<<endl;
+            return;
+        }
+
+        //Removing The Cycle - Find the point where cycle starts
+
+        slow = head;
+
+        // if cycle starts from head then, We only moves fast ...
+
+        if(slow == fast){
+
+            while(fast->next != slow){
+                fast = fast->next;
+            }
+
+            fast->next = NULL;
+            tail = fast;
+            return;
+        }
+
+
+
+        // If cycle starts from the point other than Head, we move both slow and fast
+        // by one distance each.
+
+        while(slow->next != fast->next){
+
+            slow = slow->next;
+            fast = fast->next;
+        }
+
+        fast->next = NULL;
+        tail = fast;
+        return;
+    }
+
+
+    void detectRemovalCycle(){
+
+        Node* slow =head;
+        Node* fast = head;
+        bool isCycle = false;
+
+        //  Floyd Detection Algorithm
+        while(fast != NULL & fast->next != NULL ){
+
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast){
+                isCycle = true;
+                break;
+            }
+
+        }
+
+        slow = head;
+
+        // If cycle starts from head
+
+        if(slow == fast){
+
+            while(fast->next != slow){
+                fast = fast->next;
+            }
+
+            fast->next = NULL;
+            tail = fast;
+            return;
+        }
+
+        //  If cycle starts from other than head\
+
+        while(fast->next != slow->next){
+            slow = slow->next;
+            fast = fast->next;
+        }
+
+        fast->next = NULL;
+        tail = fast;
+        return;
+    }
 };
 
 int main(){
