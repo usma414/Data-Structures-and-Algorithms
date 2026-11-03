@@ -39,6 +39,38 @@ public:
 
     }
 
+    void insertBottom(stack<int>& s, int y){
+
+        if(s.empty()){
+            s.push(y);
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        insertBottom(s, y);
+
+        s.push(x);
+
+    }
+
+    void reverseStack(stack<int>& s){
+
+        if(s.empty()){
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        reverseStack(s);
+
+        insertBottom(s, x);
+    
+    }
+
+
 };
 
 int main(){
@@ -80,13 +112,21 @@ int main(){
     s.push(40);
     s.push(50);
 
-    cout << "Bottom: "<< rs.bottom(s) << endl;
-    rs.removeBottom(s);
+    // cout << "Bottom: "<< rs.bottom(s) << endl;
+    // rs.removeBottom(s);
+
+    // while(!s.empty()){
+    //     cout<<s.top()<< " ";
+    //     s.pop();
+    // }
+
+
+    // rs.insertBottom(s, 1);
+    rs.reverseStack(s);
 
     while(!s.empty()){
-        cout<<s.top()<< " ";
+        cout<< s.top() << " ";
         s.pop();
     }
-
 }
 
