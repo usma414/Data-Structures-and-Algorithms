@@ -71,6 +71,43 @@ public:
     }
 
 
+
+    void insertsorted(stack<int>& s ,int y){
+
+        if(s.empty()){
+            s.push(y);
+            return;
+        }
+
+        if(y <= s.top()){
+            s.push(y);
+            return;
+        }
+
+        int x = s.top();
+        s.pop();
+
+        insertsorted(s, y);
+
+        s.push(x);
+
+    }
+
+    void sortStack(stack<int>& s){
+
+        if(s.empty()){
+            return;
+        }
+
+        int a = s.top();
+        s.pop();
+
+        sortStack(s);
+
+        insertsorted(s, a);
+    }
+
+
 };
 
 int main(){
@@ -108,7 +145,7 @@ int main(){
 
     s.push(10);
     s.push(20);
-    s.push(30);
+    s.push(70);
     s.push(40);
     s.push(50);
 
@@ -122,7 +159,8 @@ int main(){
 
 
     // rs.insertBottom(s, 1);
-    rs.reverseStack(s);
+    // rs.reverseStack(s);
+    rs.sortStack(s);
 
     while(!s.empty()){
         cout<< s.top() << " ";
