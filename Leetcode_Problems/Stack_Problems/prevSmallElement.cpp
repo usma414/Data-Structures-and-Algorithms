@@ -11,6 +11,8 @@ public:
         vector<int> ans(arr.size());
         stack<int> s;
 
+        // Moving right while checking left
+        
         for(int i = 0; i < arr.size(); i++) {
 
             while(s.size() > 0 && s.top() >= arr[i]) {
