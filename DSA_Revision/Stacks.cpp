@@ -201,10 +201,80 @@ using namespace std;
 //     }
 // }
 
-
+#include <vector>
 // Leetcode Problems practice
 
-class 
+class lCprcStacks{
+public:
+
+    vector<int> previousNextElement(vector<int>& arr){
+
+        vector<int> ans(arr.size());
+        stack<int> s;
+
+        for(int i = 0; i < arr.size(); i++){
+
+            while(s.size() > 0 && s.top() >= arr[i]){
+                s.pop();
+            }
+
+            if(s.empty()){
+                ans[i] = -1;
+            } else {
+                ans[i] = s.top();
+            }
+
+            s.push(arr[i]);
+        }
+
+        return ans;
+
+    }
+
+
+    vector<int> nextGreaterElement(vector<int>& arr){
+
+        vector<int> ans(arr.size());
+        stack<int> s;
+
+        for(int i = arr.size()-1; i >= 0; i--){
+
+            while(s.size() > 0 && s.top() <= arr[i]){
+                s.pop();
+            }
+
+            if(s.empty()){
+                ans[i] = -1;
+            } else {
+                ans[i] = s.top();
+            }
+
+            s.push(arr[i]);
+        }
+
+        return ans;
+    }
+};
+
+int main(){
+
+    lCprcStacks ls;
+
+    vector<int> nums = {2,4,3,7,1};
+
+    vector<int> ans = ls.previousNextElement(nums);
+    vector<int> nextans = ls.nextGreaterElement(nums);
+
+    for(int val: ans){
+        cout<< val << " ";
+    }
+
+    cout<< endl;
+
+    for(int val: nextans){
+        cout<< val << " ";
+    }
+}
 
 
 
