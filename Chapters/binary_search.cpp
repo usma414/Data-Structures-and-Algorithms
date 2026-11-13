@@ -5,6 +5,7 @@
 #include<string>
 #include<map>
 #include <unordered_set>
+#include <set>
 using namespace std;
 
 int main(){
@@ -52,7 +53,7 @@ int main(){
 
     // cout<<endl;
     
-    vector<string> cities = {"Lahore", "Faisalabad", "Multan", "Islamabad", "Karachi"};
+    vector<string> cities = {"Lahore", "Faisalabad", "Multan", "Lahore", "Islamabad", "Karachi"};
 
     unordered_map<int, string> cit;
 
@@ -88,6 +89,38 @@ int main(){
     } else {
         cout<<"City Not Found" << endl;
     }
+
+
+    unordered_set<string> uniqueCities;
+
+    for(int i = 0; i < cities.size(); i++){
+
+        uniqueCities.insert(cities[i]);
+
+    }
+
+
+    for(auto it = uniqueCities.begin(); it != uniqueCities.end(); it++){
+
+        cout << (*it) << " " ;
+    }
+
+    cout <<  endl;
+    set<string> uniqsetCities;
+
+    for(int i = 0; i < cities.size(); i++){
+
+        uniqsetCities.insert(cities[i]);
+
+    }
+
+
+    for(auto it = uniqsetCities.begin(); it != uniqsetCities.end(); it++){
+
+        cout << (*it) << " " ;
+    }
+
+
 }
 
 
