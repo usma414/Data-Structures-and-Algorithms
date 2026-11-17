@@ -53,7 +53,7 @@ int main(){
 
     // cout<<endl;
     
-    vector<string> cities = {"Lahore", "Faisalabad", "Multan", "Lahore", "Islamabad", "Karachi"};
+    // vector<string> cities = {"Lahore", "Faisalabad", "Multan", "Lahore", "Islamabad", "Karachi"};
 
     // unordered_map<int, string> cit;
 
@@ -122,24 +122,44 @@ int main(){
 
 
 
-    unordered_map<char, string> citiesByLetter;
+    // unordered_map<char, string> citiesByLetter;
 
-    for(int i = 0; i < cities.size(); i++){
+    // for(int i = 0; i < cities.size(); i++){
 
-        char firstLetter = cities[i][0];
+    //     char firstLetter = cities[i][0];
         
-        citiesByLetter.insert({firstLetter, cities[i]});
+    //     citiesByLetter.insert({firstLetter, cities[i]});
 
-    } 
+    // } 
 
-    for(auto it = citiesByLetter.begin(); it != citiesByLetter.end(); it++){
-        cout<< it->first << " : " << it->second << endl;
-    }
+    // for(auto it = citiesByLetter.begin(); it != citiesByLetter.end(); it++){
+    //     cout<< it->first << " : " << it->second << endl;
+    // }
 
-    auto it = citiesByLetter.find('L');
+    // auto it = citiesByLetter.find('L');
 
-    if(it != citiesByLetter.end()){
-        cout<< it->second << endl;
+    // if(it != citiesByLetter.end()){
+    //     cout<< it->second << endl;
+    // }
+
+
+    unordered_map<string, string> directory;
+
+
+    directory.insert({"Hamza", "0345672673"});
+    directory.insert({"Ali", "0345629374"});
+    directory.insert({"Moiz","0345620984"});
+
+    cout<< "Enter name: ";
+    string name;
+    getline(cin, name);
+
+    auto it = directory.find(name);
+
+    if(it != directory.end()){
+        cout << it->second << endl;
+    } else {
+        cout<< "No such user telephone" << endl;
     }
 
 }
