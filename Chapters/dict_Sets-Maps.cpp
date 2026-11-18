@@ -6,6 +6,7 @@
 #include<map>
 #include <unordered_set>
 #include <set>
+#include <cctype>
 using namespace std;
 
 int main(){
@@ -146,18 +147,29 @@ int main(){
     unordered_map<string, string> directory;
 
 
-    directory.insert({"Hamza", "0345672673"});
-    directory.insert({"Ali", "0345629374"});
-    directory.insert({"Moiz","0345620984"});
+    directory.insert({"hamza", "0345672673"});
+    directory.insert({"ali", "0345629374"});
+    directory.insert({"moiz","0345620984"});
 
-    cout<< "Enter name: ";
     string name;
-    getline(cin, name);
+    string telephone;
+    for(int i = 0; i < 3; i++){
+        cout<< "Enter name: ";
+        getline(cin, name);
+        cout<<"Enter Telephone: ";
+        getline(cin, telephone);
+        directory.insert({name, telephone});
+    }
 
-    auto it = directory.find(name);
+    cout<< "Enter name to find the number: ";
+
+    string findName;
+    getline(cin, findName);
+    
+    auto it = directory.find(findName);
 
     if(it != directory.end()){
-        cout << it->second << endl;
+        cout << "Name: "<< it->first << "\n" << "Telephone: " <<it->second << endl;
     } else {
         cout<< "No such user telephone" << endl;
     }
