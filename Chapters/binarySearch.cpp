@@ -1,5 +1,5 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution{
@@ -177,8 +177,6 @@ public:
     }
 
 
-
-
     int searchRotatedArray(vector<int> &arr, int target){
 
         int st = 0;
@@ -258,6 +256,27 @@ public:
         return arr[st -1];
 
     }
+
+
+    int mountainPeak(vector<int> &nums){
+
+        int st = 1;
+        int end = nums.size() - 2;
+
+        while(st <= end){
+
+            int mid = st + (end - st)/2;
+
+            if(nums[mid -1] < nums[mid] && nums[mid + 1] < nums[mid]){
+                return mid;
+            }else if(nums[mid -1] < nums[mid]){
+                st = mid + 1;
+            } else {
+                end = mid - 1;
+            } 
+        }
+        return -1;
+    }
     
 
 };
@@ -282,7 +301,10 @@ int main(){
     cout<< obj.insertNumber(insertnum, 2)<< endl;
     cout<< obj.searchRotatedArray(rotatedArr, 0) << endl;
     cout<< "Mountain: "<< obj.peakMountain(mountainArr) << endl;
-    cout<< obj.nearestmin(lap_times, 88.0);
+    cout<< obj.nearestmin(lap_times, 88.0) << endl;
+    cout<< obj.mountainPeak(mountainArr)<< endl;
 
 
 }
+
+
