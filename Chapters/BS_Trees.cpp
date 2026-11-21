@@ -72,39 +72,36 @@ using namespace std;
 //     return 0;
 // }
 
+// class Node{
+// public:
 
+//     int data;
+//     Node* right;
+//     Node* left;
 
+//     Node(int val){
+//         data = val;
+//         right = left = NULL;
+//     }
 
-class Node{
-public:
+// };
 
-    int data;
-    Node* right;
-    Node* left;
+// static int idx = -1;
 
-    Node(int val){
-        data = val;
-        right = left = NULL;
-    }
+// Node* buildTree(vector<int> &preorder){
 
-};
+//     idx++;
 
-static int idx = -1;
+//     if(preorder[idx] == -1){
+//         return NULL;
+//     }
 
-Node* buildTree(vector<int> &preorder){
-
-    idx++;
-
-    if(preorder[idx] == -1){
-        return NULL;
-    }
-
-    Node* root = new Node(preorder[idx]);
-    root->left = buildTree(preorder);
-    root->right = buildTree(preorder);
+//     Node* root = new Node(preorder[idx]);
+//     root->left = buildTree(preorder);
+//     root->right = buildTree(preorder);
     
-    return root;
-}
+//     return root;
+// }
 
 // void preOrderTraversal(Node* root){
 //     if(root == NULL){
@@ -128,3 +125,108 @@ Node* buildTree(vector<int> &preorder){
 //     preOrderTraversal(root);
 //     cout<< endl;
 // }
+
+
+
+
+
+
+class Node{
+public:
+
+    int data;
+    Node* right;
+    Node* left;
+
+    Node(int val){
+        data = val;
+        right = left = NULL;
+    }
+};
+
+static int idx = -1;
+
+Node* buildTree(vector<int> preorder){
+
+    idx++;
+
+    if(preorder[idx] == -1){
+        return NULL;
+    }
+
+    Node* root = new Node(preorder[idx]);
+    root->left = buildTree(preorder);
+    root->right = buildTree(preorder);
+    return root;
+
+}
+
+void traversepreorder(Node* root){       //Root - Left - Right
+
+    if(root == NULL){
+        return;
+    }
+
+    cout<< root->data << " ";
+    traversepreorder(root->left);
+    traversepreorder(root->right);
+}
+
+
+void inorderTraversal(Node* root){      //Left - Root - Right
+    if(root == NULL){
+        return;
+    }
+
+    inorderTraversal(root->left);
+    cout<< root->data << " ";
+    inorderTraversal(root->right);
+}
+
+void postorderTraversal(Node* root){    //Left - Left - Right 
+
+    if(root == NULL){
+        return;
+    }
+
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    cout<< root->data << " ";
+}
+
+
+void rightTraversal(Node* root){       //Right - Root - Left
+    if(root == NULL){
+        return;
+    }
+
+    rightTraversal(root->right);
+    cout<< root->data << " ";
+    rightTraversal(root->left);
+
+}
+
+int main(){
+
+    // vector<int> preorder = {1,-1,-1,2,-1,3,4,-1,-1};
+    vector<int> po = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
+
+    Node* root = buildTree(po);
+
+    cout<< "PreOrder Traversal" << endl;
+    traversepreorder(root);
+    cout<< endl;
+
+    cout<< "Inorder Traversal" << endl;
+    inorderTraversal(root);
+    cout<<endl;
+
+    cout<< "Post Traversal" << endl;
+    postorderTraversal(root);
+    cout<< endl;
+
+    cout<< "Right Traversal"<< endl;
+    rightTraversal(root);
+    cout<< endl;
+}
+
