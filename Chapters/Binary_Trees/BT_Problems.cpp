@@ -46,6 +46,27 @@ bool isIdentical(Node* p, Node* q){
     return leftIdentical && rightIdentical && p->data == q->data ;
 }
 
+
+bool isIdentical(Node* a, Node* b){
+
+    if(a == NULL|| b == NULL) {
+        return a == b;
+    } 
+
+    bool leftIdentical = isIdentical(a->left, b->left);
+    bool rigtIdentical = isIdentical(a->right, b->right);
+
+    return leftIdentical && rightIdentical && a->data == b->data; 
+
+}
+
+bool isSubtree(Node* tree, Node* subtree){
+
+    
+
+
+}
+
 int main(){
 
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
